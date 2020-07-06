@@ -12,7 +12,7 @@ namespace bialphasprog
             Start:
             int pair = 0;
             Console.Write("phrase:");
-            string p0 = Console.ReadLine();
+            string p0 = Console.ReadLine(); 
             string p1 = (p0.ToUpper());
             Console.WriteLine(p1);
             char[] MyChar = { '.', '\'', '\"', '?', '\n', ')', '(' };
