@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading;
 
 namespace bialphasprog
@@ -19,49 +20,52 @@ namespace bialphasprog
             Console.WriteLine(p2);
             if (p2.IndexOf("0") == -1)
             {
-                int numbs = numbs = 1;
+                int numbs = 1;
             }
             else if (p2.IndexOf("1") == -1)
             {
-                int numbs = numbs = 1;
+                int numbs = 1;
             }
             else if (p2.IndexOf("2") == -1)
             {
-                int numbs = numbs = 1;
+                int numbs = 1;
             }
             else if (p2.IndexOf("3") == -1)
             {
-                int numbs = numbs = 1;
+                int numbs = 1;
             }
             else if (p2.IndexOf("4") == -1)
             {
-                int numbs = numbs = 1;
+                int numbs = 1;
             }
             else if (p2.IndexOf("5") == -1)
             {
-                int numbs = numbs = 1;
+                int numbs = 1;
             }
             else if (p2.IndexOf("6") == -1)
             {
-                int numbs = numbs = 1;
+                int numbs = 1;
             }
             else if (p2.IndexOf("7") == -1)
             {
-                int numbs = numbs = 1;
+                int numbs = 1;
             }
             else if (p2.IndexOf("8") == -1)
             {
-                int numbs = numbs = 1;
+                int numbs = 1;
             }
             else if (p2.IndexOf("9") == -1)
             {
-                int numbs = numbs = 1;
+                int numbs = 1;
             }
             else
             {
-                int numbs = numbs = 0;
+                int numbs = 0;
             }
+          
+            { 
 
+            }
             goto Start;
         }
 
