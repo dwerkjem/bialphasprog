@@ -28,6 +28,7 @@ namespace bialphasprog
             p3 = p3.Replace("7", "SEVEN ");
             p3 = p3.Replace("8", "EIGHT ");
             p3 = p3.Replace("9", "NINE ");
+            p3 = p3.Replace(".", "END SENTENCE ");
             Console.WriteLine(p3);
             goto Start;
         }
