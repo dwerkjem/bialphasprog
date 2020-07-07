@@ -15,7 +15,7 @@ namespace bialphasprog
             string p0 = Console.ReadLine(); 
             string p1 = (p0.ToUpper());
             Console.WriteLine(p1);
-            char[] MyChar = { '!', '\'', '\"', '?', '\n', ')', '(' };
+            char[] MyChar = { '@', '_', '-', ')', '(', '+', '=' };
             string p2 = p1.TrimEnd(MyChar);
             Console.WriteLine(p2);
             string p3 = p2.Replace("0", "ZERO ");
