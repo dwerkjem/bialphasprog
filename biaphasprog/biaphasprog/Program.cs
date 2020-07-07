@@ -15,57 +15,20 @@ namespace bialphasprog
             string p0 = Console.ReadLine(); 
             string p1 = (p0.ToUpper());
             Console.WriteLine(p1);
-            char[] MyChar = { '.', '\'', '\"', '?', '\n', ')', '(' };
+            char[] MyChar = { '!', '\'', '\"', '?', '\n', ')', '(' };
             string p2 = p1.TrimEnd(MyChar);
             Console.WriteLine(p2);
-            if (p2.IndexOf("0") == -1)
-            {
-                int numbs = 1;
-            }
-            else if (p2.IndexOf("1") == -1)
-            {
-                int numbs = 1;
-            }
-            else if (p2.IndexOf("2") == -1)
-            {
-                int numbs = 1;
-            }
-            else if (p2.IndexOf("3") == -1)
-            {
-                int numbs = 1;
-            }
-            else if (p2.IndexOf("4") == -1)
-            {
-                int numbs = 1;
-            }
-            else if (p2.IndexOf("5") == -1)
-            {
-                int numbs = 1;
-            }
-            else if (p2.IndexOf("6") == -1)
-            {
-                int numbs = 1;
-            }
-            else if (p2.IndexOf("7") == -1)
-            {
-                int numbs = 1;
-            }
-            else if (p2.IndexOf("8") == -1)
-            {
-                int numbs = 1;
-            }
-            else if (p2.IndexOf("9") == -1)
-            {
-                int numbs = 1;
-            }
-            else
-            {
-                int numbs = 0;
-            }
-          
-            { 
-
-            }
+            string p3 = p2.Replace("0", "ZERO ");
+            p3 = p3.Replace("1", "ONE ");
+            p3 = p3.Replace("2", "TWO ");
+            p3 = p3.Replace("3", "THREE ");
+            p3 = p3.Replace("4", "FOUR ");
+            p3 = p3.Replace("5", "FIVE ");
+            p3 = p3.Replace("6", "SIX ");
+            p3 = p3.Replace("7", "SEVEN ");
+            p3 = p3.Replace("8", "EIGHT ");
+            p3 = p3.Replace("9", "NINE ");
+            Console.WriteLine(p3);
             goto Start;
         }
 
