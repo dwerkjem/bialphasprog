@@ -22,8 +22,8 @@ namespace bialphasprog
             Console.WriteLine(phrase1);
             List<string> phrase2 = phrase1.ToList<string>();
             string[] phrase3 = phrase2.TrimToEnd(v1: '@', v2: '_', v3: '-', v4: ')', v5: '(', v6: '+', v7: '='));
-                                            //| ^Severity	Code	Description	Project	File	Line	Suppression State Error CS0029  Cannot implicitly convert type 'void' to 'object'   |   
-                                            //|biaphasprog C:\Users\Owner\source\repos\bialphasprog\biaphasprog\biaphasprog\Program.cs 23  Active                                           |
+                                        //| ^Severity	Code	Description	Project	File	Line	Suppression State Error CS0029  Cannot implicitly convert type 'void' to 'object'   |   
+                                        //|biaphasprog C:\Users\Owner\source\repos\bialphasprog\biaphasprog\biaphasprog\Program.cs 23  Active                                           |
 
             Console.WriteLine(phrase3);
             string[] phrase4 = phrase3.Replace("0", "ZERO ");
