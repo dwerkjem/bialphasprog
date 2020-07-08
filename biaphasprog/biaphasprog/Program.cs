@@ -1,17 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace bialphasprog
 {
-	class Program
+    class Program
 	{
 		static void Main(string[] args)
 		{
-			// Will Be Used later to separate into bialphas.
-			int pair = 0;
-
 			string filename;
 
 			if (args.Length == 0)
@@ -26,7 +23,7 @@ namespace bialphasprog
 
 			string[] phraseArray = File.ReadAllLines(filename);
 
-			//ShowPhrases(phraseArray);
+			//ShowPhrases(phrase1);
 
 			List<string> phrases = phraseArray.ToList<string>();
 
@@ -36,9 +33,15 @@ namespace bialphasprog
 			//ShowPhrases(phrases);
 
 			ReplaceNumerics(ref phrases);
+			MakeUpercase(ref phrases);
+			
+			SplitInToBialphas(ref phrases);
+
 
 			ShowPhrases(phrases);
+			Pause(ref phrases);
 		}
+
 
 		private static void ShowPhrases(string[] phrases)
 		{
@@ -69,30 +72,67 @@ namespace bialphasprog
 			}
 		}
 
-		private static void ReplaceSpecialCharacters(ref List<string> phrases)
-		{
-			for (int i = 0; i < phrases.Count; ++i)
-			{
-				phrases[i] = phrases[i].Replace(".", " END SENTENCE ");
-			}
-		}
-
 		private static void ReplaceNumerics(ref List<string> phrases)
 		{
 			for (int i = 0; i < phrases.Count; ++i)
 			{
-				phrases[i] = phrases[i]
-					.Replace("0", "ZERO ")
-					.Replace("1", "ONE ")
-					.Replace("2", "TWO ")
-					.Replace("3", "THREE ")
-					.Replace("4", "FOUR ")
-					.Replace("5", "FIVE ")
-					.Replace("6", "SIX ")
-					.Replace("7", "SEVEN ")
-					.Replace("8", "EIGHT ")
-					.Replace("9", "NINE ");
+				phrases[i] = phrases[i].Replace("0", "ZERO_");
+				phrases[i] = phrases[i].Replace("1", "ONE_");
+				phrases[i] = phrases[i].Replace("2", "TWO_");
+				phrases[i] = phrases[i].Replace("3", "THREE_");
+				phrases[i] = phrases[i].Replace("4", "FOUR_");
+				phrases[i] = phrases[i].Replace("5", "FIVE_");
+				phrases[i] = phrases[i].Replace("6", "SIX_");
+				phrases[i] = phrases[i].Replace("7", "SEVEN_");
+				phrases[i] = phrases[i].Replace("8", "EIGHT_");
+				phrases[i] = phrases[i].Replace("9", "NINE_");
 			}
+
+		}
+		private static void ReplaceSpecialCharacters(ref List<string> phrases)
+		{
+			for (int i = 0; i < phrases.Count; ++i)
+			{
+				phrases[i] = phrases[i].Replace(".", "END_SENTENCE_");
+				phrases[i] = phrases[i].Replace(" ", "_");
+			}
+
+		}
+		private static void MakeUpercase(ref List<string> phrases)
+		{
+            for (int i = 0; i < phrases.Count; ++i)
+			{
+				phrases[i] = phrases[i].ToUpper();
+			}
+		}
+		
+		private static void SplitInToBialphas(ref List<string> phrases)
+        {
+			
+			int pair;
+			for (int i = 0; i < phrases.Count; ++i)
+            {
+				
+				if ((phrases[i].Length % 2) > 0)
+				{
+					//is decimal
+					pair = phrases[i].Length;
+					phrases[i] = phrases+"_";
+					phrases[i] = phrases[i].Insert(pair - 2, " ");
+				}
+				else
+				{
+                    //is int
+                    pair = phrases[i].Length;
+					phrases[i] = phrases[i].Insert(pair - 2, " ");
+                }
+                
+			}
+            
+		}
+		private static void Pause(ref List<string> phrases)
+		{
+			Console.ReadLine();
 		}
 	}
 }
