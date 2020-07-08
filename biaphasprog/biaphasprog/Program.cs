@@ -40,7 +40,7 @@ namespace bialphasprog
             phrase4 = phrase4.Replace("8", "EIGHT ");
             phrase4 = phrase4.Replace("9", "NINE ");
             phrase4 = phrase4.Replace(".", "END SENTENCE ");
-            
+            phrase4 = phrase4.Replace(" ", "_");
             Console.WriteLine(phrase4);
             goto Start;
         }
