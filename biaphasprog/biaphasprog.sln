@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "biaphasprog", "biaphasprog\biaphasprog.csproj", "{8D79AC55-E69E-4C69-ACDA-3AFD3443257C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5FF8F9CB-FC39-482E-96C1-D96DF14AD931}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D79AC55-E69E-4C69-ACDA-3AFD3443257C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D79AC55-E69E-4C69-ACDA-3AFD3443257C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D79AC55-E69E-4C69-ACDA-3AFD3443257C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D79AC55-E69E-4C69-ACDA-3AFD3443257C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {684D57EC-A3A5-44AF-B5EC-9D478A287217}
+	EndGlobalSection
+EndGlobal
