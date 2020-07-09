@@ -37,6 +37,8 @@ namespace bialphasprog
 			SplitInToBialphas(ref phrases);
 
 			ShowPhrases(phrases);
+
+			Pause();
 		}
 
 		private static string LoadPhrases(string filename)
@@ -96,33 +98,28 @@ namespace bialphasprog
 
 		private static void SplitInToBialphas(ref string phrases)
 		{
-			
-			int pair;
-			int ATiker = 0;
-			loop:
-			ATiker = ATiker++(2);
+			// make sure the Phrases length is a multiple of 2
 			if ((phrases.Length % 2) > 0)
 			{
 				//is decimal
 				phrases += "_";
-				goto loop;
 			}
-			else
+
+			// store off the length because it is going to change as we ad characters
+			int length = phrases.Length;
+			for (int i = 2; i < length; i += 2)
 			{
-				//is int
-				pair = phrases.Length;
-				phrases = phrases.Insert(pair - ATiker, " ");
-
-
-
-
-
+				phrases = phrases.Insert(i, " ");
+				// skip over the character we just added
+				++i;
+				++length;
 			}
 		}
 
 		private static void Pause()
 		{
-			Console.ReadLine();
+			Console.WriteLine("Hit any key to continue...");
+			Console.ReadKey();
 		}
 	}
 }
