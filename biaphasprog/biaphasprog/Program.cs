@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Text;
 
 namespace bialphasprog
 {
@@ -24,11 +23,9 @@ namespace bialphasprog
 				filename = args[0];
 			}
 
-			string[] phraseArray = File.ReadAllLines(filename);
+			string phrases = LoadPhrases(filename);
 
-			//ShowPhrases(phraseArray);
-
-			List<string> phrases = phraseArray.ToList<string>();
+			//ShowPhrases(phrases);
 
 			RemoveSpecialCharacters(ref phrases);
 			ReplaceSpecialCharacters(ref phrases);
@@ -40,59 +37,77 @@ namespace bialphasprog
 			ShowPhrases(phrases);
 		}
 
-		private static void ShowPhrases(string[] phrases)
+		/// <summary>
+		/// load the given file into one string
+		/// </summary>
+		/// <param name="filename"></param>
+		/// <returns></returns>
+		private static string LoadPhrases(string filename)
 		{
-			foreach (string phrase in phrases)
+			StringBuilder sb = new StringBuilder();
+			if (File.Exists(filename))
 			{
-				Console.WriteLine(phrase);
+				foreach (string phrase in File.ReadAllLines(filename))
+				{
+					sb.AppendLine(phrase);
+				}
 			}
+			else
+			{
+				Console.WriteLine(string.Format("File not found: {0}", filename));
+			}
+			return sb.ToString();
 		}
 
-		private static void ShowPhrases(List<string> phrases)
+		/// <summary>
+		/// display the string to the console
+		/// </summary>
+		/// <param name="phrases"></param>
+		private static void ShowPhrases(string phrases)
 		{
-			foreach (string phrase in phrases)
-			{
-				Console.WriteLine(phrase);
-			}
+			Console.WriteLine(phrases);
 		}
 
-		private static void RemoveSpecialCharacters(ref List<string> phrases)
+		/// <summary>
+		/// remove special characters from the string
+		/// </summary>
+		/// <param name="phrases"></param>
+		private static void RemoveSpecialCharacters(ref string phrases)
 		{
 			string[] charactersToRemove = { "@", "_", "-", "(", ")", "+", "=" };
 
-			for (int i = 0; i < phrases.Count; ++i)
+			foreach (string character in charactersToRemove)
 			{
-				foreach (string character in charactersToRemove)
-				{
-					phrases[i] = phrases[i].Replace(character, "");
-				}
+				phrases = phrases.Replace(character, "");
 			}
 		}
 
-		private static void ReplaceSpecialCharacters(ref List<string> phrases)
+		/// <summary>
+		/// replace special characters with words
+		/// </summary>
+		/// <param name="phrases"></param>
+		private static void ReplaceSpecialCharacters(ref string phrases)
 		{
-			for (int i = 0; i < phrases.Count; ++i)
-			{
-				phrases[i] = phrases[i].Replace(".", " END SENTENCE ");
-			}
+			phrases = phrases.Replace(".", " END SENTENCE ");
 		}
 
-		private static void ReplaceNumerics(ref List<string> phrases)
+		/// <summary>
+		/// replace numerals with words
+		/// </summary>
+		/// <param name="phrases"></param>
+		private static void ReplaceNumerics(ref string phrases)
 		{
-			for (int i = 0; i < phrases.Count; ++i)
-			{
-				phrases[i] = phrases[i]
-					.Replace("0", "ZERO ")
-					.Replace("1", "ONE ")
-					.Replace("2", "TWO ")
-					.Replace("3", "THREE ")
-					.Replace("4", "FOUR ")
-					.Replace("5", "FIVE ")
-					.Replace("6", "SIX ")
-					.Replace("7", "SEVEN ")
-					.Replace("8", "EIGHT ")
-					.Replace("9", "NINE ");
-			}
+			phrases = phrases
+				.Replace("0", "ZERO ")
+				.Replace("1", "ONE ")
+				.Replace("2", "TWO ")
+				.Replace("3", "THREE ")
+				.Replace("4", "FOUR ")
+				.Replace("5", "FIVE ")
+				.Replace("6", "SIX ")
+				.Replace("7", "SEVEN ")
+				.Replace("8", "EIGHT ")
+				.Replace("9", "NINE ");
 		}
 	}
 }
