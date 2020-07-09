@@ -96,19 +96,27 @@ namespace bialphasprog
 
 		private static void SplitInToBialphas(ref string phrases)
 		{
+			
 			int pair;
+			int ATiker = 0;
+			loop:
+			ATiker = ATiker++(2);
 			if ((phrases.Length % 2) > 0)
 			{
 				//is decimal
-				pair = phrases.Length;
 				phrases += "_";
-				phrases = phrases.Insert(pair - 2, " ");
+				goto loop;
 			}
 			else
 			{
 				//is int
 				pair = phrases.Length;
-				phrases = phrases.Insert(pair - 2, " ");
+				phrases = phrases.Insert(pair - ATiker, " ");
+
+
+
+
+
 			}
 		}
 
