@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace bialphasprog
 {
-    class Program
+	class Program
 	{
 		static void Main(string[] args)
 		{
@@ -21,11 +22,9 @@ namespace bialphasprog
 				filename = args[0];
 			}
 
-			string[] phraseArray = File.ReadAllLines(filename);
+			string phrases = LoadPhrases(filename);
 
-			//ShowPhrases(phrase1);
-
-			List<string> phrases = phraseArray.ToList<string>();
+			//ShowPhrases(phrases);
 
 			RemoveSpecialCharacters(ref phrases);
 			ReplaceSpecialCharacters(ref phrases);
@@ -34,103 +33,86 @@ namespace bialphasprog
 
 			ReplaceNumerics(ref phrases);
 			MakeUpercase(ref phrases);
-			
+
 			SplitInToBialphas(ref phrases);
 
-
 			ShowPhrases(phrases);
-			Pause(ref phrases);
 		}
 
-
-		private static void ShowPhrases(string[] phrases)
+		private static string LoadPhrases(string filename)
 		{
-			foreach (string phrase in phrases)
+			StringBuilder sb = new StringBuilder();
+			if (File.Exists(filename))
 			{
-				Console.WriteLine(phrase);
+				foreach (string phrase in File.ReadAllLines(filename))
+				{
+					sb.AppendLine(phrase);
+				}
 			}
+			return sb.ToString();
 		}
 
-		private static void ShowPhrases(List<string> phrases)
+		private static void ShowPhrases(string phrases)
 		{
-			foreach (string phrase in phrases)
-			{
-				Console.WriteLine(phrase);
-			}
+			Console.WriteLine(phrases);
 		}
 
-		private static void RemoveSpecialCharacters(ref List<string> phrases)
+		private static void RemoveSpecialCharacters(ref string phrases)
 		{
 			string[] charactersToRemove = { "@", "_", "-", "(", ")", "+", "=" };
 
-			for (int i = 0; i < phrases.Count; ++i)
+			foreach (string character in charactersToRemove)
 			{
-				foreach (string character in charactersToRemove)
-				{
-					phrases[i] = phrases[i].Replace(character, "");
-				}
+				phrases = phrases.Replace(character, "");
 			}
 		}
 
-		private static void ReplaceNumerics(ref List<string> phrases)
+		private static void ReplaceNumerics(ref string phrases)
 		{
-			for (int i = 0; i < phrases.Count; ++i)
-			{
-				phrases[i] = phrases[i].Replace("0", "ZERO_");
-				phrases[i] = phrases[i].Replace("1", "ONE_");
-				phrases[i] = phrases[i].Replace("2", "TWO_");
-				phrases[i] = phrases[i].Replace("3", "THREE_");
-				phrases[i] = phrases[i].Replace("4", "FOUR_");
-				phrases[i] = phrases[i].Replace("5", "FIVE_");
-				phrases[i] = phrases[i].Replace("6", "SIX_");
-				phrases[i] = phrases[i].Replace("7", "SEVEN_");
-				phrases[i] = phrases[i].Replace("8", "EIGHT_");
-				phrases[i] = phrases[i].Replace("9", "NINE_");
-			}
+			phrases = phrases
+				.Replace("0", "ZERO_")
+				.Replace("1", "ONE_")
+				.Replace("2", "TWO_")
+				.Replace("3", "THREE_")
+				.Replace("4", "FOUR_")
+				.Replace("5", "FIVE_")
+				.Replace("6", "SIX_")
+				.Replace("7", "SEVEN_")
+				.Replace("8", "EIGHT_")
+				.Replace("9", "NINE_");
+		}
 
-		}
-		private static void ReplaceSpecialCharacters(ref List<string> phrases)
+		private static void ReplaceSpecialCharacters(ref string phrases)
 		{
-			for (int i = 0; i < phrases.Count; ++i)
-			{
-				phrases[i] = phrases[i].Replace(".", "END_SENTENCE_");
-				phrases[i] = phrases[i].Replace(" ", "_");
-			}
+			phrases = phrases
+				.Replace(".", "END_SENTENCE_")
+				.Replace(" ", "_");
+		}
 
-		}
-		private static void MakeUpercase(ref List<string> phrases)
+		private static void MakeUpercase(ref string phrases)
 		{
-            for (int i = 0; i < phrases.Count; ++i)
-			{
-				phrases[i] = phrases[i].ToUpper();
-			}
+			phrases = phrases.ToUpper();
 		}
-		
-		private static void SplitInToBialphas(ref List<string> phrases)
-        {
-			
+
+		private static void SplitInToBialphas(ref string phrases)
+		{
 			int pair;
-			for (int i = 0; i < phrases.Count; ++i)
-            {
-				
-				if ((phrases[i].Length % 2) > 0)
-				{
-					//is decimal
-					pair = phrases[i].Length;
-					phrases[i] = phrases+"_";
-					phrases[i] = phrases[i].Insert(pair - 2, " ");
-				}
-				else
-				{
-                    //is int
-                    pair = phrases[i].Length;
-					phrases[i] = phrases[i].Insert(pair - 2, " ");
-                }
-                
+			if ((phrases.Length % 2) > 0)
+			{
+				//is decimal
+				pair = phrases.Length;
+				phrases += "_";
+				phrases = phrases.Insert(pair - 2, " ");
 			}
-            
+			else
+			{
+				//is int
+				pair = phrases.Length;
+				phrases = phrases.Insert(pair - 2, " ");
+			}
 		}
-		private static void Pause(ref List<string> phrases)
+
+		private static void Pause()
 		{
 			Console.ReadLine();
 		}
