@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace bialphasprog
@@ -48,7 +46,7 @@ namespace bialphasprog
 			{
 				foreach (string phrase in File.ReadAllLines(filename))
 				{
-					sb.AppendLine(phrase);
+					sb.Append(phrase);
 				}
 			}
 			return sb.ToString();
@@ -101,18 +99,24 @@ namespace bialphasprog
 			// make sure the Phrases length is a multiple of 2
 			if ((phrases.Length % 2) > 0)
 			{
-				//is decimal
 				phrases += "_";
 			}
 
-			// store off the length because it is going to change as we ad characters
+			// store off the length because it is going to change as we add characters
 			int length = phrases.Length;
 			for (int i = 2; i < length; i += 2)
 			{
 				phrases = phrases.Insert(i, " ");
-				// skip over the character we just added
+
+				// skip over the character we just added and increase the length by 1
 				++i;
 				++length;
+			}
+
+			// make sure the Phrases length is a multiple of 2
+			if ((phrases.Length % 2) > 0)
+			{
+				phrases += "_";
 			}
 		}
 
