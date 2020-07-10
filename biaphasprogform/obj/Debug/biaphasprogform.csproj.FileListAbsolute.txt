@@ -18,3 +18,13 @@ C:\Users\Owner\OneDrive\bialphasprog\bialphasprog\biaphasprogform\obj\Debug\biap
 C:\Users\Owner\OneDrive\bialphasprog\bialphasprog\biaphasprogform\obj\Debug\biaphasprogform.csproj.CoreCompileInputs.cache
 C:\Users\Owner\OneDrive\bialphasprog\bialphasprog\biaphasprogform\obj\Debug\biaphasprogform.exe
 C:\Users\Owner\OneDrive\bialphasprog\bialphasprog\biaphasprogform\obj\Debug\biaphasprogform.pdb
+C:\Users\Owner\Source\Repos\bialphasprog\biaphasprogform\bin\Debug\biaphasprogform.exe.config
+C:\Users\Owner\Source\Repos\bialphasprog\biaphasprogform\bin\Debug\biaphasprogform.exe
+C:\Users\Owner\Source\Repos\bialphasprog\biaphasprogform\bin\Debug\biaphasprogform.pdb
+C:\Users\Owner\Source\Repos\bialphasprog\biaphasprogform\obj\Debug\biaphasprogform.csprojAssemblyReference.cache
+C:\Users\Owner\Source\Repos\bialphasprog\biaphasprogform\obj\Debug\biaphasprogform.Form1.resources
+C:\Users\Owner\Source\Repos\bialphasprog\biaphasprogform\obj\Debug\biaphasprogform.Properties.Resources.resources
+C:\Users\Owner\Source\Repos\bialphasprog\biaphasprogform\obj\Debug\biaphasprogform.csproj.GenerateResource.cache
+C:\Users\Owner\Source\Repos\bialphasprog\biaphasprogform\obj\Debug\biaphasprogform.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Source\Repos\bialphasprog\biaphasprogform\obj\Debug\biaphasprogform.exe
+C:\Users\Owner\Source\Repos\bialphasprog\biaphasprogform\obj\Debug\biaphasprogform.pdb

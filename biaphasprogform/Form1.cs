@@ -8,11 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+using System.Diagnostics;
 
 namespace biaphasprogform
 {
 	public partial class Form1 : Form
-	{
+	
+	{int tick = 0;
 		public Form1()
 		{
 			InitializeComponent();
@@ -37,7 +40,7 @@ namespace biaphasprogform
 		private void toolStripButton1_Click(object sender, EventArgs e)
 		{
 			string text = textBox1.Text;
-
+			
 			{
 				string[] charactersToRemove = { "@", "_", "-", "(", ")", "+", "=", ",", "\"", "'", ";", "`", "\\" };
 
@@ -150,7 +153,27 @@ namespace biaphasprogform
 					}
 				}
 			}
+           
 		}
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+			SoundPlayer sound;
+			sound = new SoundPlayer(@"C:\Users\Owner\source\repos\bialphasprog\bialphasprog\biaphasprogform\obj\Debug\Windows Background.wav");
+			sound.Play();
+
+		}
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+			tick = tick + 1;
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+		
 	}
 }
 
