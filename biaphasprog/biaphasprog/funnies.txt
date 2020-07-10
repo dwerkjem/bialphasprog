@@ -15,7 +15,7 @@ Surprise your boss.  Get to work on time.
 Help!  I'm trapped in a PDP 11/70!
 Never try to teach a pig to sing.  It wastes your time and annoys the pig. -- Lazarus Long, "Time Enough for Love"
 
-    <
+    
     1
     2
     3
@@ -23,7 +23,7 @@ Never try to teach a pig to sing.  It wastes your time and annoys the pig. -- La
     5
     6
     ...
-    >
+    
     Was it enough? That was the question he kept asking himself. Was being satisfied enough? He looked around him at everyone yearning to just be satisfied in their daily life and he had reached that goal. He knew that he was satisfied and he also knew it wasn't going to be enough.
 Do you think you're living an ordinary life? You are so mistaken it's difficult to even explain. The mere fact that you exist makes you extraordinary. The odds of you existing are less than winning the lottery, but here you are. Are you going to let this extraordinary opportunity pass?
 She considered the birds to be her friends. She'd put out food for them each morning and then she'd watch as they came to the feeders to gorge themselves for the day. She wondered what they would do if something ever happened to her. Would they miss the meals she provided if she failed to put out the food one morning?

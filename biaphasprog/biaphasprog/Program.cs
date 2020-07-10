@@ -31,8 +31,8 @@ namespace bialphasprog
 
 			ReplaceNumerics(ref phrases);
 			MakeUpercase(ref phrases);
-
 			SplitInToBialphas(ref phrases);
+			firstEncryption(ref phrases);
 
 			ShowPhrases(phrases);
 
@@ -59,7 +59,7 @@ namespace bialphasprog
 
 		private static void RemoveSpecialCharacters(ref string phrases)
 		{
-			string[] charactersToRemove = { "@", "_", "-", "(", ")", "+", "=" };
+			string[] charactersToRemove = { "@", "_", "-", "(", ")", "+", "=", ",", "\"", "\'"};
 
 			foreach (string character in charactersToRemove)
 			{
@@ -86,7 +86,8 @@ namespace bialphasprog
 		{
 			phrases = phrases
 				.Replace(".", "END_SENTENCE_")
-				.Replace(" ", "_");
+				.Replace(" ", "_")
+				.Replace("?", "END_Question_");
 		}
 
 		private static void MakeUpercase(ref string phrases)
@@ -124,6 +125,39 @@ namespace bialphasprog
 		{
 			Console.WriteLine("Hit any key to continue...");
 			Console.ReadKey();
+		}
+
+		private static void firstEncryption(ref string phrases)
+        {
+			phrases = phrases
+				.Replace("_", ",0,")
+				.Replace("A", ",1,")
+				.Replace("B", ",2,")
+				.Replace("C", ",3,")
+				.Replace("D", ",4,")
+				.Replace("E", ",5,")
+				.Replace("F", ",6,")
+				.Replace("G", ",7,")
+				.Replace("H", ",8,")
+				.Replace("I", ",9,")
+				.Replace("J", ",10,")
+				.Replace("K", ",11,")
+				.Replace("L", ",12,")
+				.Replace("N", ",14,")
+				.Replace("M", ",13,")
+				.Replace("O", ",15,")
+				.Replace("P", ",16,")
+				.Replace("Q", ",17,")
+				.Replace("R", ",18,")
+				.Replace("S", ",19,")
+				.Replace("T", ",20,")
+				.Replace("U", ",21,")
+				.Replace("V", ",22,")
+				.Replace("W", ",23,")
+				.Replace("X", ",24,")
+				.Replace("Y", ",25,")
+				.Replace("Z", ",26,");
+
 		}
 	}
 }
