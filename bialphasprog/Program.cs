@@ -10,32 +10,6 @@ namespace bialphasprog
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        private static void Main(Form app)
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-        }
-		static void Main(string[] args)
-		{
-			string filename;
-
-			if (args.Length == 0)
-			{
-				Console.Write("file path:");
-				filename = Console.ReadLine();
-			}
-			else
-			{
-				filename = args[0];
-			}
-
-			string phrases = LoadPhrases(filename);
-			ShowPhrases(phrases);
 
 			RemoveSpecialCharacters(ref phrases);
 			ReplaceSpecialCharacters(ref phrases);
@@ -47,7 +21,6 @@ namespace bialphasprog
 			SplitInToBialphas(ref phrases);
 			FirstEncryption(ref phrases);
 
-			ShowPhrases(phrases);
 
 		}
 
