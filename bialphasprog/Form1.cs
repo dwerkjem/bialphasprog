@@ -1,12 +1,29 @@
-using System;
-using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
 
 namespace bialphasprog
 {
-	class Program
-	{
-		static void Main(string[] args)
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private static void Form1_Load(string[] args)
 		{
 			string filename;
 
@@ -167,5 +184,11 @@ namespace bialphasprog
 				}
 			}
 		}
-	}
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+
 }
