@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\GO.png" />
+    <Content Include="Resources\Windows Background.wav" />
     <None Include="Resources\Untitled.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

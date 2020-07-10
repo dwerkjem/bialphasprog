@@ -159,7 +159,7 @@ namespace biaphasprogform
         private void progressBar1_Click(object sender, EventArgs e)
         {
 			SoundPlayer sound;
-			sound = new SoundPlayer(@"C:\Users\Owner\source\repos\bialphasprog\bialphasprog\biaphasprogform\obj\Debug\Windows Background.wav");
+			sound = new SoundPlayer(@"C:\Users\Owner\source\repos\bialphasprog\bialphasprog\biaphasprogform\obj\Debug\Windows\Background.wav");
 			sound.Play();
 
 		}
