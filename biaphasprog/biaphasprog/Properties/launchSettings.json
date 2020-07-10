@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "biaphasprog": {
-      "commandName": "Project",
-      "commandLineArgs": "funnies.txt"
-    }
-  }
-}
