@@ -92,11 +92,11 @@ namespace biaphasprogform
 						int transformedCharacter = character - 64 + (ii > 0 ? 26 : 0);
 
 						// each letter was one character, each number we are inserting is from 1 to 2 character, let's 0 pad them all to 2 characters
-						// and remove the letter or symbol we just converted
 
 						text = text.Insert(index, transformedCharacter.ToString().PadLeft(2, '0'));
 					}
 
+					// and remove the letter or symbol we just converted
 					text = text.Remove(index + 2, 1);
 				}
 
