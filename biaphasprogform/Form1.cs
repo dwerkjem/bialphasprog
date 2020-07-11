@@ -42,7 +42,7 @@ namespace biaphasprogform
 			_encrypting = true;
 			GoButton.Enabled = false;
 
-			// just remember that the order of things happening is from the inside out
+			// just remember that the order of things happening is from the inside out (the last shall be first and the first shall be last)
 			string text =
 				ConvertCharactersToDigits(
 				AddSpacesBetweenBialphas(
@@ -118,7 +118,7 @@ namespace biaphasprogform
 		/// <returns></returns>
 		private string AddSpacesBetweenBialphas(string text)
 		{
-			StringBuilder newText = new StringBuilder(text.Length / 3 * 2);
+			StringBuilder newText = new StringBuilder(text.Length * 2);
 
 			int count = 0;
 			foreach (char character in text)
@@ -239,7 +239,3 @@ namespace biaphasprogform
 		}
 	}
 }
-
-
-
-
