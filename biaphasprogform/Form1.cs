@@ -133,7 +133,7 @@ namespace biaphasprogform
 			// make sure the text length is a multiple of 2
 			if ((newText.Length % 2) > 0)
 			{
-				newText.Append("_");
+				newText.Append(" ");
 			}
 
 			return newText.ToString();
