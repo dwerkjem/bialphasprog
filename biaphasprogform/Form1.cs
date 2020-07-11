@@ -124,39 +124,105 @@ namespace biaphasprogform
 
 		private static string ReplaceSpecialCharacters(string text)
 		{
-			return text
-				.Replace(".", "END_SENTENCE_")
-				.Replace(" ", "_")
-				.Replace("!", "END_EXCLAMATION_")
-				.Replace("?", "END_QUESTION_")
-				.Replace("\t", "_");
+			StringBuilder newText = new StringBuilder(text.Length * 2);
+			foreach (char character in text)
+			{
+				switch (character)
+				{
+					case '.':
+						newText.Append("END_SENTENCE_");
+						break;
+
+					case '\t':
+					case ' ':
+						newText.Append('_');
+						break;
+
+					case '!':
+						newText.Append("END_EXCLAMATION_");
+						break;
+
+					case '?':
+						newText.Append("END_QUESTION_");
+						break;
+
+					default:
+						newText.Append(character);
+						break;
+				}
+			}
+			return newText.ToString();
 		}
 
 		private static string ReplaceNumerals(string text)
 		{
-			return text
-				.Replace("0", "ZERO_")
-				.Replace("1", "ONE_")
-				.Replace("2", "TWO_")
-				.Replace("3", "THREE_")
-				.Replace("4", "FOUR_")
-				.Replace("5", "FIVE_")
-				.Replace("6", "SIX_")
-				.Replace("7", "SEVEN_")
-				.Replace("8", "EIGHT_")
-				.Replace("9", "NINE_");
+			StringBuilder newText = new StringBuilder(text.Length * 2);
+			foreach (char character in text)
+			{
+				switch (character)
+				{
+					case '0':
+						newText.Append("ZERO_");
+						break;
+
+					case '1':
+						newText.Append("ONE_");
+						break;
+
+					case '2':
+						newText.Append("TWO_");
+						break;
+
+					case '3':
+						newText.Append("THREE_");
+						break;
+
+					case '4':
+						newText.Append("FOUR_");
+						break;
+
+					case '5':
+						newText.Append("FIVE_");
+						break;
+
+					case '6':
+						newText.Append("SIX_");
+						break;
+
+					case '7':
+						newText.Append("SEVEN_");
+						break;
+
+					case '8':
+						newText.Append("EIGHT_");
+						break;
+
+					case '9':
+						newText.Append("NINE_");
+						break;
+
+					default:
+						newText.Append(character);
+						break;
+				}
+			}
+			return newText.ToString();
 		}
 
 		private static string RemoveSpecialCharacters(string text)
 		{
-			string[] charactersToRemove = { "@", "_", "-", "(", ")", "+", "=", ",", "\"", "'", ";", "`", "\\", "\r", "\n" };
+			char[] charactersToRemove = { '@', '_', '-', '(', ')', '+', '=', ',', '"', '\'', ';', '`', '\\', '\r', '\n' };
+			StringBuilder newText = new StringBuilder(text.Length);
 
-			foreach (string character in charactersToRemove)
+			foreach (char character in text)
 			{
-				text = text.Replace(character, "");
+				if (!charactersToRemove.Contains(character))
+				{
+					newText.Append(character);
+				}
 			}
 
-			return text;
+			return newText.ToString();
 		}
 
 		private void phraseTextBox_TextChanged(object sender, EventArgs e)
