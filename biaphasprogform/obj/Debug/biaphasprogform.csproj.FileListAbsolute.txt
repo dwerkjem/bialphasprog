@@ -49,3 +49,4 @@ C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\biaphasprogf
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\biaphasprogform.pdb
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\Resources\phrases.txt
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\Resources\Windows Background.wav
+C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\obj\Debug\biaphasprogform.csprojAssemblyReference.cache
