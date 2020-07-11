@@ -86,10 +86,10 @@ namespace biaphasprogform
 					else
 					{
 						// - 64 gets 'A' to 1, B to 2, etc.
-						// + 26 gets us to the next bigger number after Z
+						
 
 						int character = (int)text[index];
-						int transformedCharacter = character - 64 + (ii > 0 ? 26 : 0);
+						int transformedCharacter = character - 64 + (ii > 0 ? 0 : 0);
 
 						// each letter was one character, each number we are inserting is from 1 to 2 character, let's 0 pad them all to 2 characters
 
@@ -126,11 +126,11 @@ namespace biaphasprogform
 				++length;
 			}
 
-			// make sure the text length is a multiple of 2
-			if ((text.Length % 2) > 0)
-			{
-				text += "_";
-			}
+			//// make sure the text length is a multiple of 2
+			//if ((text.Length % 2) > 0)
+			//{
+			//	text += "_";
+			//}
 
 			// we need it to end with a space for processing later
 			text += " ";
