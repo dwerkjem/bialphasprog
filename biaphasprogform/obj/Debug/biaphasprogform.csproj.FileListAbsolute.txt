@@ -47,3 +47,5 @@ C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\obj\Debug\biaphasprogf
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\biaphasprogform.exe.config
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\biaphasprogform.exe
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\biaphasprogform.pdb
+C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\Resources\phrases.txt
+C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\Resources\Windows Background.wav

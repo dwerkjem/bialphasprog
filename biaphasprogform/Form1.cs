@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Media;
 using System.Windows.Forms;
 
 namespace biaphasprogform
@@ -12,13 +14,16 @@ namespace biaphasprogform
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
+			string phrases = File.ReadAllText(@"Resources\phrases.txt");
+			phraseTextBox.Text = phrases;
 		}
 
 		private void GoButton_Click(object sender, EventArgs e)
 		{
-			//SoundPlayer sound;
-			//sound = new SoundPlayer(@"C:\Users\Owner\source\repos\bialphasprog\bialphasprog\biaphasprogform\obj\Debug\Windows\Background.wav");
-			//sound.Play();
+			using (SoundPlayer sound = new SoundPlayer(@"Resources\Windows Background.wav"))
+			{
+				sound.Play();
+			}
 
 			string text = phraseTextBox.Text;
 
@@ -87,6 +92,11 @@ namespace biaphasprogform
 				for (int ii = 0; ii < 2; ++ii)
 				{
 					int index = i + (ii * 2);
+
+					if (index > length - 1)
+					{
+						break;
+					}
 
 					if (text[index] == '_')
 					{

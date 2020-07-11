@@ -82,8 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\GO.png" />
-    <Content Include="Resources\phrases.txt" />
-    <Content Include="Resources\Windows Background.wav" />
+    <Content Include="Resources\phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Windows Background.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Untitled.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
