@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Text;
 using System.Windows.Forms;
 
 namespace biaphasprogform
@@ -31,16 +32,20 @@ namespace biaphasprogform
 			string text = phraseTextBox.Text;
 
 			text = RemoveSpecialCharacters(text);
+			UpdateDisplay(text);
 
 			text = ReplaceNumerals(text);
+			UpdateDisplay(text);
 
 			text = ReplaceSpecialCharacters(text);
+			UpdateDisplay(text);
 
 			text = text.ToUpper();
+			UpdateDisplay(text);
 
-			AddSpacesBetweenBialphas(ref text);
+			text = AddSpacesBetweenBialphas(text);
 
-			ConvertCharactersToDigits(ref text);
+			text = ConvertCharactersToDigits(text);
 
 			MessageBox.Show("Finished", "Encryption", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			_encrypting = false;
@@ -54,102 +59,82 @@ namespace biaphasprogform
 			}
 		}
 
-		private void ConvertCharactersToDigits(ref string text)
+		private void UpdateDisplay(string text)
 		{
-			int length;
-			// go through each pair of characters and convert them to digits
-			// it should be an even number of characters at this point
-
-			int spaces = text.Count(s => s == ' ');
-
-			length = text.Length;
-
-			int newLength = (length - spaces) * 2 + spaces;
-
-			EncryptionProgressBar.Maximum = newLength;
-			EncryptionProgressBar.Minimum = 0;
-			EncryptionProgressBar.Step = 5;
-
-			for (int i = 0; i < length; i += 5) // + 5 for '0000 ' we want to get to the next place where there is a letter
-			{
-				EncryptionProgressBar.PerformStep();
-				Application.DoEvents();
-
-				for (int ii = 0; ii < 2; ++ii)
-				{
-					int index = i + (ii * 2);
-
-					if (text[index] == '_')
-					{
-						text = text.Insert(index, "00");
-					}
-					else
-					{
-						// - 64 gets 'A' to 1, B to 2, etc.
-						
-
-						int character = (int)text[index];
-						int transformedCharacter = character - 64 + (ii > 0 ? 0 : 0);
-
-						// each letter was one character, each number we are inserting is from 1 to 2 character, let's 0 pad them all to 2 characters
-
-						text = text.Insert(index, transformedCharacter.ToString().PadLeft(2, '0'));
-					}
-
-					// and remove the letter or symbol we just converted
-					text = text.Remove(index + 2, 1);
-				}
-
-				// we have added a 2 characters and then removed 1 so we need to update length
-				length = text.Length;
-
-				phraseTextBox.Text = text;
-			}
+			phraseTextBox.Text = text;
+			Application.DoEvents();
 		}
 
-		private static void AddSpacesBetweenBialphas(ref string text)
+		private string ConvertCharactersToDigits(string text)
 		{
+			//EncryptionProgressBar.Maximum = text.Length;
+			//EncryptionProgressBar.Minimum = 0;
+			//EncryptionProgressBar.Step = 1;
+
+			StringBuilder newText = new StringBuilder(text.Length * 2);
+
+			foreach (char character in text)
+			{
+				if (character == ' ')
+				{
+					newText.Append(" ");
+				}
+				else if (character == '_')
+				{
+					newText.Append("00");
+				}
+				else
+				{
+					// - 64 gets 'A' to 1, B to 2, etc.						
+					int transformedCharacter = character - 64;
+
+					newText.Append(transformedCharacter.ToString().PadLeft(2, '0'));
+				}
+
+				//EncryptionProgressBar.PerformStep();
+			}
+
+			UpdateDisplay(newText.ToString());
+
+			return newText.ToString();
+		}
+
+		private string AddSpacesBetweenBialphas(string text)
+		{
+			StringBuilder newText = new StringBuilder(text.Length / 3 * 2);
+
+			int count = 0;
+			foreach (char character in text)
+			{
+				newText.Append(character);
+				if ((++count % 2) == 0)
+				{
+					newText.Append(" ");
+				}
+			}
+
 			// make sure the text length is a multiple of 2
-			if ((text.Length % 2) > 0)
+			if ((newText.Length % 2) > 0)
 			{
-				text += "_";
+				newText.Append("_");
 			}
 
-			// store off the length because it is going to change as we add characters
-			int length = text.Length;
-			for (int i = 2; i < length; i += 2)
-			{
-				text = text.Insert(i, " ");
-
-				// skip over the character we just added and increase the length by 1
-				++i;
-				++length;
-			}
-
-			//// make sure the text length is a multiple of 2
-			//if ((text.Length % 2) > 0)
-			//{
-			//	text += "_";
-			//}
-
-			// we need it to end with a space for processing later
-			text += " ";
+			return newText.ToString();
 		}
 
 		private static string ReplaceSpecialCharacters(string text)
 		{
-			text = text
+			return text
 				.Replace(".", "END_SENTENCE_")
 				.Replace(" ", "_")
 				.Replace("!", "END_EXCLAMATION_")
 				.Replace("?", "END_QUESTION_")
 				.Replace("\t", "_");
-			return text;
 		}
 
 		private static string ReplaceNumerals(string text)
 		{
-			text = text
+			return text
 				.Replace("0", "ZERO_")
 				.Replace("1", "ONE_")
 				.Replace("2", "TWO_")
@@ -160,7 +145,6 @@ namespace biaphasprogform
 				.Replace("7", "SEVEN_")
 				.Replace("8", "EIGHT_")
 				.Replace("9", "NINE_");
-			return text;
 		}
 
 		private static string RemoveSpecialCharacters(string text)
