@@ -147,79 +147,78 @@ namespace biaphasprogform
 		private static string RemoveOrReplaceCharacters(string text)
 		{
 			StringBuilder newText = new StringBuilder(text.Length * 2);
-			char[] charactersToRemove = { '@', '_', '-', '(', ')', '+', '=', ',', '"', '\'', ';', '`', '\\', '\r', '\n' };
 
 			foreach (char character in text)
 			{
-				// if the character is in the list of characters to remove we are just going to skip over it here
-				if (!charactersToRemove.Contains(character))
+				// just looking for ascii alphanumeric characters plus a few more
+				switch (character)
 				{
-					switch (character)
-					{
-						// special characters to replace
-						case '.':
-							newText.Append("END_SENTENCE_");
-							break;
+					// special characters to replace
+					case '.':
+						newText.Append("END_SENTENCE_");
+						break;
 
-						case '\t':
-						case ' ':
-							newText.Append('_');
-							break;
+					case ' ':
+						newText.Append('_');
+						break;
 
-						case '!':
-							newText.Append("END_EXCLAMATION_");
-							break;
+					case '!':
+						newText.Append("END_EXCLAMATION_");
+						break;
 
-						case '?':
-							newText.Append("END_QUESTION_");
-							break;
+					case '?':
+						newText.Append("END_QUESTION_");
+						break;
 
-						// numerals to replace
-						case '0':
-							newText.Append("ZERO_");
-							break;
+					// numerals to replace
+					case '0':
+						newText.Append("ZERO_");
+						break;
 
-						case '1':
-							newText.Append("ONE_");
-							break;
+					case '1':
+						newText.Append("ONE_");
+						break;
 
-						case '2':
-							newText.Append("TWO_");
-							break;
+					case '2':
+						newText.Append("TWO_");
+						break;
 
-						case '3':
-							newText.Append("THREE_");
-							break;
+					case '3':
+						newText.Append("THREE_");
+						break;
 
-						case '4':
-							newText.Append("FOUR_");
-							break;
+					case '4':
+						newText.Append("FOUR_");
+						break;
 
-						case '5':
-							newText.Append("FIVE_");
-							break;
+					case '5':
+						newText.Append("FIVE_");
+						break;
 
-						case '6':
-							newText.Append("SIX_");
-							break;
+					case '6':
+						newText.Append("SIX_");
+						break;
 
-						case '7':
-							newText.Append("SEVEN_");
-							break;
+					case '7':
+						newText.Append("SEVEN_");
+						break;
 
-						case '8':
-							newText.Append("EIGHT_");
-							break;
+					case '8':
+						newText.Append("EIGHT_");
+						break;
 
-						case '9':
-							newText.Append("NINE_");
-							break;
+					case '9':
+						newText.Append("NINE_");
+						break;
 
-						// everything else not handled above
-						default:
+					default:
+						// at this point we only want A-Z and a-z
+						int asciiValue = (int)character;
+						if ((asciiValue >= 65 && asciiValue <= 90) || (asciiValue >= 97 && asciiValue <= 122))
+						{
 							newText.Append(character);
-							break;
-					}
+						}
+						break;
 				}
 			}
 
