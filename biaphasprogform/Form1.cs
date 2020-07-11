@@ -33,14 +33,14 @@ namespace biaphasprogform
 		}
 
 		/// <summary>
-		/// handle the go button (encrypt_ click event
+		/// handle the go button (encrypt) click event
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void GoButton_Click(object sender, EventArgs e)
 		{
-			GoButton.Enabled = false;
 			_encrypting = true;
+			GoButton.Enabled = false;
 
 			// just remember that the order of things happening is from the inside out
 			string text =
@@ -96,6 +96,7 @@ namespace biaphasprogform
 						newText.Append("00");
 						break;
 
+					// everything left should be an alphabetic character
 					default:
 						{
 							// - 64 gets 'A' to 1, B to 2, etc.						
