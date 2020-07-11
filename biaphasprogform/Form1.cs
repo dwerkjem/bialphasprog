@@ -27,27 +27,15 @@ namespace biaphasprogform
 			GoButton.Enabled = false;
 			_encrypting = true;
 
+			// just remember that the order of things happening is from the inside out
+			string text =
+				ConvertCharactersToDigits(
+				AddSpacesBetweenBialphas(
+				RemoveOrReplaceCharacters(phraseTextBox.Text).ToUpper()
+				));
+
+			UpdateDisplay(text);
 			PlaySound();
-
-			string text = phraseTextBox.Text;
-
-			text = RemoveSpecialCharacters(text);
-			UpdateDisplay(text);
-
-			text = ReplaceNumerals(text);
-			UpdateDisplay(text);
-
-			text = ReplaceSpecialCharacters(text);
-			UpdateDisplay(text);
-
-			text = text.ToUpper();
-			UpdateDisplay(text);
-
-			text = AddSpacesBetweenBialphas(text);
-
-			text = ConvertCharactersToDigits(text);
-
-			MessageBox.Show("Finished", "Encryption", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			_encrypting = false;
 		}
 
@@ -75,26 +63,28 @@ namespace biaphasprogform
 
 			foreach (char character in text)
 			{
-				if (character == ' ')
+				switch (character)
 				{
-					newText.Append(" ");
-				}
-				else if (character == '_')
-				{
-					newText.Append("00");
-				}
-				else
-				{
-					// - 64 gets 'A' to 1, B to 2, etc.						
-					int transformedCharacter = character - 64;
+					case ' ':
+						newText.Append(" ");
+						break;
 
-					newText.Append(transformedCharacter.ToString().PadLeft(2, '0'));
+					case '_':
+						newText.Append("00");
+						break;
+
+					default:
+						{
+							// - 64 gets 'A' to 1, B to 2, etc.						
+							int transformedCharacter = character - 64;
+
+							newText.Append(transformedCharacter.ToString().PadLeft(2, '0'));
+						}
+						break;
 				}
 
 				//EncryptionProgressBar.PerformStep();
 			}
-
-			UpdateDisplay(newText.ToString());
 
 			return newText.ToString();
 		}
@@ -122,110 +112,87 @@ namespace biaphasprogform
 			return newText.ToString();
 		}
 
-		private static string ReplaceSpecialCharacters(string text)
-		{
-			StringBuilder newText = new StringBuilder(text.Length * 2);
-			foreach (char character in text)
-			{
-				switch (character)
-				{
-					case '.':
-						newText.Append("END_SENTENCE_");
-						break;
-
-					case '\t':
-					case ' ':
-						newText.Append('_');
-						break;
-
-					case '!':
-						newText.Append("END_EXCLAMATION_");
-						break;
-
-					case '?':
-						newText.Append("END_QUESTION_");
-						break;
-
-					default:
-						newText.Append(character);
-						break;
-				}
-			}
-			return newText.ToString();
-		}
-
-		private static string ReplaceNumerals(string text)
-		{
-			StringBuilder newText = new StringBuilder(text.Length * 2);
-			foreach (char character in text)
-			{
-				switch (character)
-				{
-					case '0':
-						newText.Append("ZERO_");
-						break;
-
-					case '1':
-						newText.Append("ONE_");
-						break;
-
-					case '2':
-						newText.Append("TWO_");
-						break;
-
-					case '3':
-						newText.Append("THREE_");
-						break;
-
-					case '4':
-						newText.Append("FOUR_");
-						break;
-
-					case '5':
-						newText.Append("FIVE_");
-						break;
-
-					case '6':
-						newText.Append("SIX_");
-						break;
-
-					case '7':
-						newText.Append("SEVEN_");
-						break;
-
-					case '8':
-						newText.Append("EIGHT_");
-						break;
-
-					case '9':
-						newText.Append("NINE_");
-						break;
-
-					default:
-						newText.Append(character);
-						break;
-				}
-			}
-			return newText.ToString();
-		}
-
-		private static string RemoveSpecialCharacters(string text)
+		private static string RemoveOrReplaceCharacters(string text)
 		{
 			char[] charactersToRemove = { '@', '_', '-', '(', ')', '+', '=', ',', '"', '\'', ';', '`', '\\', '\r', '\n' };
-			StringBuilder newText = new StringBuilder(text.Length);
+			StringBuilder newText = new StringBuilder(text.Length * 2);
 
 			foreach (char character in text)
 			{
 				if (!charactersToRemove.Contains(character))
 				{
-					newText.Append(character);
+					switch (character)
+					{
+						// special characters
+						case '.':
+							newText.Append("END_SENTENCE_");
+							break;
+
+						case '\t':
+						case ' ':
+							newText.Append('_');
+							break;
+
+						case '!':
+							newText.Append("END_EXCLAMATION_");
+							break;
+
+						case '?':
+							newText.Append("END_QUESTION_");
+							break;
+
+						// numerals
+						case '0':
+							newText.Append("ZERO_");
+							break;
+
+						case '1':
+							newText.Append("ONE_");
+							break;
+
+						case '2':
+							newText.Append("TWO_");
+							break;
+
+						case '3':
+							newText.Append("THREE_");
+							break;
+
+						case '4':
+							newText.Append("FOUR_");
+							break;
+
+						case '5':
+							newText.Append("FIVE_");
+							break;
+
+						case '6':
+							newText.Append("SIX_");
+							break;
+
+						case '7':
+							newText.Append("SEVEN_");
+							break;
+
+						case '8':
+							newText.Append("EIGHT_");
+							break;
+
+						case '9':
+							newText.Append("NINE_");
+							break;
+
+						default:
+							newText.Append(character);
+							break;
+					}
 				}
 			}
 
 			return newText.ToString();
 		}
 
-		private void phraseTextBox_TextChanged(object sender, EventArgs e)
+		private void PhraseTextBox_TextChanged(object sender, EventArgs e)
 		{
 			if (!_encrypting)
 			{

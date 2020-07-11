@@ -52,7 +52,7 @@ namespace biaphasprogform
 			this.phraseTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.phraseTextBox.Size = new System.Drawing.Size(729, 306);
 			this.phraseTextBox.TabIndex = 0;
-			this.phraseTextBox.TextChanged += new System.EventHandler(this.phraseTextBox_TextChanged);
+			this.phraseTextBox.TextChanged += new System.EventHandler(this.PhraseTextBox_TextChanged);
 			// 
 			// EncryptionProgressBar
 			// 
