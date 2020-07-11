@@ -9,19 +9,34 @@ namespace biaphasprogform
 {
 	public partial class Form1 : Form
 	{
+		/// <summary>
+		/// true when we are running the encryption process
+		/// </summary>
 		private bool _encrypting = false;
 
+		/// <summary>
+		/// main form constructor
+		/// </summary>
 		public Form1()
 		{
 			InitializeComponent();
 		}
 
+		/// <summary>
+		/// handle the form load event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			string phrases = File.ReadAllText(@"Resources\phrases.txt");
-			phraseTextBox.Text = phrases;
+			phraseTextBox.Text = File.ReadAllText(@"Resources\phrases.txt");
 		}
 
+		/// <summary>
+		/// handle the go button (encrypt_ click event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void GoButton_Click(object sender, EventArgs e)
 		{
 			GoButton.Enabled = false;
@@ -39,6 +54,9 @@ namespace biaphasprogform
 			_encrypting = false;
 		}
 
+		/// <summary>
+		/// plan a sound
+		/// </summary>
 		private static void PlaySound()
 		{
 			using (SoundPlayer sound = new SoundPlayer(@"Resources\Windows Background.wav"))
@@ -47,18 +65,23 @@ namespace biaphasprogform
 			}
 		}
 
+		/// <summary>
+		/// update the text box and give to th UI thread a chance to display it
+		/// </summary>
+		/// <param name="text"></param>
 		private void UpdateDisplay(string text)
 		{
 			phraseTextBox.Text = text;
 			Application.DoEvents();
 		}
 
+		/// <summary>
+		/// return a new string with each alpha character replaced with a 2 digit number representing its place in the alphabet (A=1, B=2, C=3...)
+		/// </summary>
+		/// <param name="text"></param>
+		/// <returns></returns>
 		private string ConvertCharactersToDigits(string text)
 		{
-			//EncryptionProgressBar.Maximum = text.Length;
-			//EncryptionProgressBar.Minimum = 0;
-			//EncryptionProgressBar.Step = 1;
-
 			StringBuilder newText = new StringBuilder(text.Length * 2);
 
 			foreach (char character in text)
@@ -82,13 +105,16 @@ namespace biaphasprogform
 						}
 						break;
 				}
-
-				//EncryptionProgressBar.PerformStep();
 			}
 
 			return newText.ToString();
 		}
 
+		/// <summary>
+		/// add a space character after each bialpha
+		/// </summary>
+		/// <param name="text"></param>
+		/// <returns></returns>
 		private string AddSpacesBetweenBialphas(string text)
 		{
 			StringBuilder newText = new StringBuilder(text.Length / 3 * 2);
@@ -112,18 +138,24 @@ namespace biaphasprogform
 			return newText.ToString();
 		}
 
+		/// <summary>
+		/// create a new string with all characters to remove removed and all characters to replace replaced
+		/// </summary>
+		/// <param name="text"></param>
+		/// <returns></returns>
 		private static string RemoveOrReplaceCharacters(string text)
 		{
-			char[] charactersToRemove = { '@', '_', '-', '(', ')', '+', '=', ',', '"', '\'', ';', '`', '\\', '\r', '\n' };
 			StringBuilder newText = new StringBuilder(text.Length * 2);
+			char[] charactersToRemove = { '@', '_', '-', '(', ')', '+', '=', ',', '"', '\'', ';', '`', '\\', '\r', '\n' };
 
 			foreach (char character in text)
 			{
+				// if the character is in the list of characters to remove we are just going to skip over it here
 				if (!charactersToRemove.Contains(character))
 				{
 					switch (character)
 					{
-						// special characters
+						// special characters to replace
 						case '.':
 							newText.Append("END_SENTENCE_");
 							break;
@@ -141,7 +173,7 @@ namespace biaphasprogform
 							newText.Append("END_QUESTION_");
 							break;
 
-						// numerals
+						// numerals to replace
 						case '0':
 							newText.Append("ZERO_");
 							break;
@@ -182,6 +214,7 @@ namespace biaphasprogform
 							newText.Append("NINE_");
 							break;
 
+						// everything else not handled above
 						default:
 							newText.Append(character);
 							break;
@@ -192,6 +225,11 @@ namespace biaphasprogform
 			return newText.ToString();
 		}
 
+		/// <summary>
+		/// make sure the go (encrypt) button is enabled if any text is changed in the text box (unless it is the program changing the text)
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void PhraseTextBox_TextChanged(object sender, EventArgs e)
 		{
 			if (!_encrypting)
