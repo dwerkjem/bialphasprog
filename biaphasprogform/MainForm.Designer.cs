@@ -31,6 +31,7 @@ namespace biaphasprogform
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.phraseTextBox = new System.Windows.Forms.TextBox();
 			this.EncryptionProgressBar = new System.Windows.Forms.ProgressBar();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -101,10 +102,11 @@ namespace biaphasprogform
 			// 
 			// DisplayImagesButton
 			// 
+			this.DisplayImagesButton.AutoSize = true;
 			this.DisplayImagesButton.Enabled = false;
 			this.DisplayImagesButton.Location = new System.Drawing.Point(84, 340);
 			this.DisplayImagesButton.Name = "DisplayImagesButton";
-			this.DisplayImagesButton.Size = new System.Drawing.Size(75, 23);
+			this.DisplayImagesButton.Size = new System.Drawing.Size(88, 23);
 			this.DisplayImagesButton.TabIndex = 4;
 			this.DisplayImagesButton.Text = "&Display Images";
 			this.DisplayImagesButton.UseVisualStyleBackColor = true;
@@ -112,7 +114,7 @@ namespace biaphasprogform
 			// 
 			// QuitButton
 			// 
-			this.QuitButton.Location = new System.Drawing.Point(165, 340);
+			this.QuitButton.Location = new System.Drawing.Point(178, 340);
 			this.QuitButton.Name = "QuitButton";
 			this.QuitButton.Size = new System.Drawing.Size(75, 23);
 			this.QuitButton.TabIndex = 5;
@@ -128,6 +130,7 @@ namespace biaphasprogform
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.ClientSize = new System.Drawing.Size(729, 366);
 			this.Controls.Add(this.tableLayoutPanel1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainForm";
 			this.Text = "Bialpha Encryption";
 			this.Load += new System.EventHandler(this.Form1_Load);

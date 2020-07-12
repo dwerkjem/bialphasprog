@@ -32,10 +32,11 @@ namespace biaphasprogform
 
 		public void LoadImages()
 		{
+			CleanupImages();
+
 			SuspendLayout();
 			foreach (string bialpha in BialphList)
 			{
-				// PictureBox is a IDispose class and needs to be cleaned up when you are done with it or you will run out of memory and resources
 				PictureBox image = new PictureBox
 				{
 					// we really want to load the image named: biapha + ".png" but they don't exist here yet
@@ -47,6 +48,32 @@ namespace biaphasprogform
 				ImagesFlowLayoutPanel.Controls.Add(image);
 			}
 			ResumeLayout(true);
+		}
+
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			CleanupImages();
+
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		private void CleanupImages()
+		{
+			// PictureBox is a IDispose class and needs to be cleaned up when you are done with it or you will run out of memory and resources
+			while (ImagesFlowLayoutPanel.Controls.Count > 0)
+			{
+				Control control = ImagesFlowLayoutPanel.Controls[0];
+				ImagesFlowLayoutPanel.Controls.RemoveAt(0);
+				control.Dispose();
+			}
 		}
 	}
 }

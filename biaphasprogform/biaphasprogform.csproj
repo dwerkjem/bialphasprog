@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\GO.png" />
+    <Content Include="Resources\Lock.ico" />
     <Content Include="Resources\phrases.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
