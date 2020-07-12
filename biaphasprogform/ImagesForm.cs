@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace biaphasprogform
@@ -6,6 +7,7 @@ namespace biaphasprogform
 	public partial class ImagesForm : Form
 	{
 		private List<string> _bialphas = new List<string>();
+		private List<PictureBox> _images = new List<PictureBox>();
 
 		public ImagesForm()
 		{
@@ -34,7 +36,6 @@ namespace biaphasprogform
 		{
 			CleanupImages();
 
-			SuspendLayout();
 			foreach (string bialpha in BialphList)
 			{
 				PictureBox image = new PictureBox
@@ -45,8 +46,11 @@ namespace biaphasprogform
 					Margin = new Padding(0),
 					Padding = new Padding(0)
 				};
-				ImagesFlowLayoutPanel.Controls.Add(image);
+				_images.Add(image);
 			}
+			
+			SuspendLayout();
+			ImagesFlowLayoutPanel.Controls.AddRange(_images.ToArray());
 			ResumeLayout(true);
 		}
 
@@ -74,6 +78,11 @@ namespace biaphasprogform
 				ImagesFlowLayoutPanel.Controls.RemoveAt(0);
 				control.Dispose();
 			}
+		}
+
+		private void CloseButton_Click(object sender, System.EventArgs e)
+		{
+			Close();
 		}
 	}
 }
