@@ -56,9 +56,11 @@ C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\biaphasprogf
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\biaphasprogform.exe
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\biaphasprogform.pdb
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\obj\Debug\biaphasprogform.csprojAssemblyReference.cache
-C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\obj\Debug\biaphasprogform.Form1.resources
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\obj\Debug\biaphasprogform.Properties.Resources.resources
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\obj\Debug\biaphasprogform.csproj.GenerateResource.cache
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\obj\Debug\biaphasprogform.csproj.CoreCompileInputs.cache
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\obj\Debug\biaphasprogform.exe
 C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\obj\Debug\biaphasprogform.pdb
+C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\obj\Debug\biaphasprogform.ImagesForm.resources
+C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\obj\Debug\biaphasprogform.MainForm.resources
+C:\Users\peter\source\repos\bialphasprog2\biaphasprogform\bin\Debug\Resources\Untitled.png
