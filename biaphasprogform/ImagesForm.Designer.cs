@@ -51,6 +51,7 @@
 			// 
 			// ImagesFlowLayoutPanel
 			// 
+			this.ImagesFlowLayoutPanel.AutoScroll = true;
 			this.tableLayoutPanel1.SetColumnSpan(this.ImagesFlowLayoutPanel, 2);
 			this.ImagesFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ImagesFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
